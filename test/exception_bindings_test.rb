@@ -18,31 +18,27 @@ class ExceptionTest < MiniTest::Test
 
   CustomError = Class.new(StandardError)
 
-  test '#bindings returns all the bindings of where the error originated' do
-    begin
-      unused_local_variable = "Test"
-      raise
-    rescue => exc
-      assert_equal 'Test', exc.bindings.first.eval('unused_local_variable')
-    end
+  def test_bindings_returns_all_the_bindings_of_where_the_error_originated
+    unused_local_variable = "Test"
+    raise
+  rescue => exc
+    assert_equal 'Test', exc.bindings.first.eval('unused_local_variable')
   end
 
-  test '#bindings returns all the bindings of where a custom error originated' do
-    begin
-      unused_local_variable = "Test"
-      raise CustomError
-    rescue => exc
-      assert_equal 'Test', exc.bindings.first.eval('unused_local_variable')
-    end
+  def test_bindings_returns_all_the_bindings_of_where_a_custom_error_originated
+    unused_local_variable = "Test"
+    raise CustomError
+  rescue => exc
+    assert_equal 'Test', exc.bindings.first.eval('unused_local_variable')
   end
 
-  test '#bindings goes down the stack' do
+  def test_bindings_goes_down_the_stack
     exc = TestScenarionWithNestedCalls.new.call
 
     assert_equal 42, exc.bindings.first.eval('unused_local_variable')
   end
 
-  test '#bindings is empty when exception is still not raised' do
+  def test_bindings_is_empty_when_exception_is_still_not_raised
     exc = CustomError.new
 
     assert_equal [], exc.bindings

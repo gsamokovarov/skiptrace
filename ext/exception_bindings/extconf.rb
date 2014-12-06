@@ -1,3 +1,3 @@
 require "mkmf"
 
-create_makefile("exception_bindings/exception_ext")
+create_makefile("exception_bindings/current_bindings")
