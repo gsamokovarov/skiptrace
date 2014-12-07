@@ -13,4 +13,4 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-task default: [:compile, :test]
+task default: [:clean, :compile, :test]
