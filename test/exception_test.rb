@@ -43,4 +43,16 @@ class ExceptionTest < MiniTest::Test
 
     assert_equal [], exc.bindings
   end
+
+  def test_bindings_is_empty_when_set_backtrace_is_badly_called
+    exc = CustomError.new
+
+    # Exception#set_backtrace expects a string or array of strings. If the
+    # input isn't like this it will raise a TypeError.
+    assert_raises(TypeError) do
+      exc.set_backtrace([nil])
+    end
+
+    assert_equal [], exc.bindings
+  end
 end

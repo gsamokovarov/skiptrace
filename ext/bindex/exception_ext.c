@@ -5,9 +5,15 @@ extern VALUE rb_check_backtrace(VALUE);
 static VALUE
 bx_exc_set_backtrace(VALUE self, VALUE bt)
 {
+  /* rb_check_backtrace can raise an exception, if the input arguments are not
+   * to its likings. Set the bindings afterwards, so we don't waste when not
+   * needed.
+   */
+  VALUE backtrace = rb_iv_set(self, "bt", rb_check_backtrace(bt));
+
   rb_iv_set(self, "bindings", current_bindings());
 
-  return rb_iv_set(self, "bt", rb_check_backtrace(bt));
+  return backtrace;
 }
 
 static VALUE
