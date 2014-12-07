@@ -24,6 +24,9 @@
  SUCH DAMAGE.
 
 **********************************************************************/
+#ifndef _RUBY_20_H
+#define _RUBY_20_H
+
 #include "ruby_20/internal.h"
 #include "ruby_20/method.h"
 #include "ruby_20/vm_core.h"
@@ -135,3 +138,5 @@ rb_check_backtrace(VALUE bt)
   }
   return bt;
 }
+
+#endif
