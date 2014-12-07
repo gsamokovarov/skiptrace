@@ -11,4 +11,5 @@
 *.so
 *.o
 *.a
+.ycm_extra_conf.py*
 mkmf.log
