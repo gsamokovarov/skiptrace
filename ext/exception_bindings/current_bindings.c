@@ -1,7 +1,11 @@
 #include "ruby.h"
 #include "ruby/debug.h"
 
-VALUE eb_cExceptionBindings;
+#ifdef RUBY_20
+#include "ruby_20.h"
+#elif RUBY_21
+#include "ruby_21.h"
+#endif
 
 static VALUE
 current_bindings_callback(const rb_debug_inspector_t *context, void *data)
@@ -22,15 +26,35 @@ current_bindings_callback(const rb_debug_inspector_t *context, void *data)
 }
 
 static VALUE
-eb_current_bindings(void)
+current_bindings(void)
 {
   return rb_debug_inspector_open(current_bindings_callback, NULL);
 }
 
-void
-Init_current_bindings(void)
+static VALUE
+eb_exc_set_backtrace(VALUE self, VALUE bt)
 {
-  eb_cExceptionBindings = rb_define_module("ExceptionBindings");
+  rb_iv_set(self, "bindings", current_bindings());
 
-  rb_define_singleton_method(eb_cExceptionBindings, "current_bindings", eb_current_bindings, 0);
+  return rb_iv_set(self, "bt", rb_check_backtrace(bt));
+}
+
+static VALUE
+eb_exc_bindings(VALUE self, VALUE bt)
+{
+  VALUE bindings;
+
+  bindings = rb_iv_get(self, "bindings");
+  if (NIL_P(bindings)) {
+    bindings = rb_ary_new();
+  }
+
+  return bindings;
+}
+
+void
+Init_exception_ext(void)
+{
+  rb_define_method(rb_eException, "set_backtrace", eb_exc_set_backtrace, 1);
+  rb_define_method(rb_eException, "bindings", eb_exc_bindings, 0);
 }
