@@ -1,7 +1,5 @@
 #include "bindex.h"
 
-extern VALUE rb_check_backtrace(VALUE);
-
 static VALUE
 bx_exc_set_backtrace(VALUE self, VALUE bt)
 {

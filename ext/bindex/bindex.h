@@ -6,4 +6,7 @@
 
 VALUE current_bindings(void);
 
+/* This will come from one of the ruby_*.h files. */
+extern VALUE rb_check_backtrace(VALUE);
+
 #endif
