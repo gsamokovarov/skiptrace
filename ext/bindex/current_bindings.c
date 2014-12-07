@@ -32,7 +32,7 @@ current_bindings(void)
 }
 
 static VALUE
-eb_exc_set_backtrace(VALUE self, VALUE bt)
+bx_exc_set_backtrace(VALUE self, VALUE bt)
 {
   rb_iv_set(self, "bindings", current_bindings());
 
@@ -40,7 +40,7 @@ eb_exc_set_backtrace(VALUE self, VALUE bt)
 }
 
 static VALUE
-eb_exc_bindings(VALUE self, VALUE bt)
+bx_exc_bindings(VALUE self, VALUE bt)
 {
   VALUE bindings;
 
@@ -55,6 +55,6 @@ eb_exc_bindings(VALUE self, VALUE bt)
 void
 Init_exception_ext(void)
 {
-  rb_define_method(rb_eException, "set_backtrace", eb_exc_set_backtrace, 1);
-  rb_define_method(rb_eException, "bindings", eb_exc_bindings, 0);
+  rb_define_method(rb_eException, "set_backtrace", bx_exc_set_backtrace, 1);
+  rb_define_method(rb_eException, "bindings", bx_exc_bindings, 0);
 }

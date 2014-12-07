@@ -1,6 +1,6 @@
 # Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/exception_bindings/fork )
+1. Fork it ( https://github.com/gsamokovarov/bindex/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -9,7 +9,7 @@
 ## Etiquette
 
 If you want to contribute code, which is not your own or is heavily inspired by
-someone else's code, please give them a warn shoutout in the pull request (or
+someone else's code, please give them a warm shoutout in the pull request (or
 the commit message) and the code itself.
 
 Of course, don't try to sneak in non MIT compatible code.

@@ -1,15 +1,15 @@
 $LOAD_PATH << File.expand_path('../lib', __FILE__)
 
-require 'exception_bindings/version'
+require 'bindex/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "exception_bindings"
-  spec.version       = ExceptionBindings::VERSION
+  spec.name          = "bindex"
+  spec.version       = Bindex::VERSION
   spec.authors       = ["Genadi Samokovarov"]
   spec.email         = ["gsamokovarov@gmail.com"]
-  spec.extensions    = ["ext/exception_bindings/extconf.rb"]
-  spec.summary       = "Get the bindings of the traces of an exception"
-  spec.homepage      = "https://github.com/gsamokovarov/exception_bindings"
+  spec.extensions    = ["ext/bindex/extconf.rb"]
+  spec.summary       = "Bindings for your Ruby exceptions"
+  spec.homepage      = "https://github.com/gsamokovarov/bindex"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

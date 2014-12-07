@@ -1,4 +1,4 @@
-# Exception Bindings
+# Bindex
 
 This gem adds `Exception#bindings` method to every exception.
 

@@ -9,4 +9,4 @@ when /2\.1\.*/
   $INCFLAGS << " -I./ruby_21/"
 end
 
-create_makefile("exception_bindings/exception_ext")
+create_makefile("bindex/exception_ext")
