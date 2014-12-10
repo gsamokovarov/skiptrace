@@ -12,4 +12,6 @@ when /2\.1\.*/
   $INCFLAGS << " -I./ruby_21/"
 end
 
+$CFLAGS << " -g3 -O0" if ENV["DEBUG"]
+
 create_makefile("bindex/exception_ext")
