@@ -1,6 +1,9 @@
 require "mkmf"
 
 case RUBY_VERSION
+when /1\.9\.3/
+  $CFLAGS   << " -D RUBY_193"
+  $INCFLAGS << " -I./ruby_193/"
 when /2\.0\.*/
   $CFLAGS   << " -D RUBY_20"
   $INCFLAGS << " -I./ruby_20/"
