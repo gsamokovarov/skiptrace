@@ -8,7 +8,6 @@ class EvalNestedFixture
   private
 
     def raise_an_error_in_eval
-      unused_local_variable = 42
-      eval 'raise'
+      eval 'raise', binding, __FILE__, __LINE__
     end
 end

@@ -8,7 +8,6 @@ class BasicNestedFixture
   private
 
     def raise_an_error
-      unused_local_variable = 42
       raise
     end
 end
