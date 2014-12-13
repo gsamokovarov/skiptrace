@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ExceptionTest < MiniTest::Test
-  class TestScenarionWithNestedCalls
+  class BasicNestedScenario
     def call
       raise_an_error
     rescue => exc
@@ -13,6 +13,21 @@ class ExceptionTest < MiniTest::Test
       def raise_an_error
         unused_local_variable = 42
         raise
+      end
+  end
+
+  class EvalNestedScenario
+    def call
+      tap { raise_an_error_in_eval }
+    rescue => exc
+      exc
+    end
+
+    private
+
+      def raise_an_error_in_eval
+        unused_local_variable = 42
+        eval 'raise'
       end
   end
 
@@ -33,7 +48,13 @@ class ExceptionTest < MiniTest::Test
   end
 
   def test_bindings_goes_down_the_stack
-    exc = TestScenarionWithNestedCalls.new.call
+    exc = BasicNestedScenario.new.call
+
+    assert_equal 42, exc.bindings.first.eval('unused_local_variable')
+  end
+
+  def test_bindings_inside_of_an_eval
+    exc = EvalNestedScenario.new.call
 
     assert_equal 42, exc.bindings.first.eval('unused_local_variable')
   end
