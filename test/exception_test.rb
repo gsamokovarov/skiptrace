@@ -1,37 +1,37 @@
 require 'test_helper'
 
-class ExceptionTest < MiniTest::Test
-  def test_bindings_returns_all_the_bindings_of_where_the_error_originated
+class ExceptionTest < BaseTest
+  test 'bindings returns all the bindings of where the error originated' do
     exc = FlatFixture.new.call
 
     assert_equal 3, exc.bindings.first.eval('__LINE__')
   end
 
-  def test_bindings_returns_all_the_bindings_of_where_a_custom_error_originated
+  test 'bindings returns all the bindings of where a custom error originate' do
     exc = CustomErrorFixture.new.call
 
     assert_equal 5, exc.bindings.first.eval('__LINE__')
   end
 
-  def test_bindings_goes_down_the_stack
+  test 'bindings goes down the_stack' do
     exc = BasicNestedFixture.new.call
 
     assert_equal 11, exc.bindings.first.eval('__LINE__')
   end
 
-  def test_bindings_inside_of_an_eval
+  test 'bindings inside_of_an_eval' do
     exc = EvalNestedFixture.new.call
 
     assert_equal 11, exc.bindings.first.eval('__LINE__')
   end
 
-  def test_bindings_is_empty_when_exception_is_still_not_raised
+  test 'bindings is_empty_when_exception_is_still_not_raised' do
     exc = RuntimeError.new
 
     assert_equal [], exc.bindings
   end
 
-  def test_bindings_is_empty_when_set_backtrace_is_badly_called
+  test 'bindings is_empty_when_set_backtrace_is_badly_called' do
     exc = RuntimeError.new
 
     # Exception#set_backtrace expects a string or array of strings. If the

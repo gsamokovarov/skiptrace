@@ -9,3 +9,9 @@ current_directory = File.dirname(File.expand_path(__FILE__))
 Dir["#{current_directory}/fixtures/**/*.rb"].each do |fixture|
   require fixture
 end
+
+class BaseTest < MiniTest::Test
+  def self.test(name, &block)
+    define_method("test_#{name}", &block)
+  end
+end
