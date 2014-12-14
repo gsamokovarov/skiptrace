@@ -1,5 +1,8 @@
-require "bindex/version"
-require "bindex/exception_ext"
-
-module Bindex
+case RUBY_ENGINE
+when 'rbx'
+  require 'bindex/rubinius'
+when 'ruby'
+  require 'bindex/exception_ext'
 end
+
+require "bindex/version"
