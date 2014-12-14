@@ -14,4 +14,4 @@ end
 
 $CFLAGS << " -g3 -O0" if ENV["DEBUG"]
 
-create_makefile("bindex/exception_ext")
+create_makefile("bindex/cruby")

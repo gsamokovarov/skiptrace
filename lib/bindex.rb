@@ -2,7 +2,7 @@ case RUBY_ENGINE
 when 'rbx'
   require 'bindex/rubinius'
 when 'ruby'
-  require 'bindex/exception_ext'
+  require 'bindex/cruby'
 end
 
 require "bindex/version"

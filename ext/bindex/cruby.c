@@ -27,7 +27,7 @@ bx_exc_bindings(VALUE self, VALUE bt)
 }
 
 void
-Init_exception_ext(void)
+Init_cruby(void)
 {
   rb_define_method(rb_eException, "set_backtrace", bx_exc_set_backtrace, 1);
   rb_define_method(rb_eException, "bindings", bx_exc_bindings, 0);
