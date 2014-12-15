@@ -30,30 +30,30 @@ public class ThreadContextInternals {
   }
 
   public Frame[] getFrameStack() {
-    return (Frame[]) getPrivateField(context, "frameStack");
+    return (Frame[]) getPrivateField("frameStack");
   }
 
   public int getFrameIndex() {
-    return (Integer) getPrivateField(context, "frameIndex");
+    return (Integer) getPrivateField("frameIndex");
   }
 
   public DynamicScope[] getScopeStack() {
-    return (DynamicScope[]) getPrivateField(context, "scopeStack");
+    return (DynamicScope[]) getPrivateField("scopeStack");
   }
 
   public int getScopeIndex() {
-    return (Integer) getPrivateField(context, "scopeIndex");
+    return (Integer) getPrivateField("scopeIndex");
   }
 
   public BacktraceElement[] getBacktrace() {
-    return (BacktraceElement[]) getPrivateField(context, "backtrace");
+    return (BacktraceElement[]) getPrivateField("backtrace");
   }
 
   public int getBacktraceIndex() {
-    return (Integer) getPrivateField(context, "backtraceIndex");
+    return (Integer) getPrivateField("backtraceIndex");
   }
 
-  private Object getPrivateField(ThreadContext context, String fieldName) {
+  private Object getPrivateField(String fieldName) {
     try {
       Field field = ThreadContext.class.getDeclaredField(fieldName);
 
