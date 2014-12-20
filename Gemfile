@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in exception_bindings.gemspec
 gemspec
+
+# Rubinius 2.2.2 travis tests complain about this one.
+platforms :rbx do
+  gem "rubysl-singleton"
+end
