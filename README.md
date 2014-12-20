@@ -12,17 +12,20 @@ mind, just raise an exception :)
 
 ## Support
 
+### CRuby
+
 CRuby 1.9.2 and below is **not** supported.
 
-### CRuby 1.9.3
+### JRuby
 
-No known issues at the moment. If you find any, please use the issue tracker to
-report them.
+To get the best support, run JRuby in interpreted mode.
 
-### CRuby 2.0, 2.1
+```bash
+export JRUBY_OPTS=-J-Djruby.compile.mode=OFF
 
-No known issues at the moment. If you find any, please use the issue tracker to
-report them.
+# If you run JRuby 1.7.12 and above, you can use:
+# export JRUBY_OPTS=--dev
+```
 
 ### Rubinius
 
