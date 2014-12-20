@@ -1,0 +1,47 @@
+language: ruby
+
+rvm:
+  - ruby-1.9.3-p551
+  - ruby-1.9.3-p550
+  - ruby-1.9.3-p547
+  - ruby-1.9.3-p545-railsexpress
+  - ruby-1.9.3-p545
+  - ruby-1.9.3-p484
+
+  - ruby-2.0.0-p598
+  - ruby-2.0.0-p576
+  - ruby-2.0.0-p481
+  - ruby-2.0.0-p451
+  - ruby-2.0.0-p353
+  - ruby-2.0.0-p247
+  - ruby-2.0.0-p195
+  - ruby-2.0.0-p0
+
+  - ruby-2.1.5
+  - ruby-2.1.4
+  - ruby-2.1.3
+  - ruby-2.1.2-clang
+  - ruby-2.1.2
+  - ruby-2.1.1-clang
+  - ruby-2.1.1
+  - ruby-2.1.0-rc1
+  - ruby-2.1.0-preview2
+  - ruby-2.1.0-preview1
+  - ruby-2.1.0
+
+  - ruby-head
+
+  - rbx-2.2.7
+  - rbx-2.2.6
+  - rbx-2.2.2
+
+  - jruby-head
+  - jruby-1.7.9-d19
+  - jruby-1.7.17
+  - jruby-1.7.11
+
+env:
+  global:
+    - JRUBY_OPTS=--dev
+
+sudo: false
