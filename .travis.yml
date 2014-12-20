@@ -43,4 +43,6 @@ env:
   global:
     - JRUBY_OPTS=--dev
 
+before_install: gem install bundler
+
 sudo: false
