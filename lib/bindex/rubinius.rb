@@ -1,5 +1,3 @@
-require 'pathname'
-
 module Bindex
   class Rubinius
     # Gets the current bindings for all available Ruby frames.
