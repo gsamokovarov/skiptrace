@@ -75,6 +75,8 @@ current_bindings(void)
 #include "ruby_20.h"
 #elif RUBY_21
 #include "ruby_21.h"
+#elif RUBY_21preview
+#include "ruby_21preview.h"
 #endif
 
 static VALUE
