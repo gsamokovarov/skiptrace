@@ -1,4 +1,4 @@
-# Bindex
+# Bindex [![Build Status](https://travis-ci.org/gsamokovarov/bindex.svg?branch=master)](https://travis-ci.org/gsamokovarov/bindex)
 
 This gem adds `Exception#bindings` method to every exception.
 
@@ -24,7 +24,7 @@ To get the best support, run JRuby in interpreted mode.
 export JRUBY_OPTS=-J-Djruby.compile.mode=OFF
 
 # If you run JRuby 1.7.12 and above, you can use:
-# export JRUBY_OPTS=--dev
+export JRUBY_OPTS=--dev
 ```
 
 ### Rubinius
