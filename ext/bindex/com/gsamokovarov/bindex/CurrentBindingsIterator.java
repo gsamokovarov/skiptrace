@@ -45,7 +45,7 @@ class CurrentBindingsIterator implements Iterator<Binding> {
         DynamicScope scope = scopeStack[scopeIndex--];
         BacktraceElement element = backtrace[backtraceIndex--];
 
-        return new Binding(frame, scope.getStaticScope().getModule(), scope, element.clone());
+        return BindingBuilder.build(frame, scope, element);
     }
 
     public void remove() {
