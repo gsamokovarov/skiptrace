@@ -1,14 +1,14 @@
 # Bindex [![Build Status](https://travis-ci.org/gsamokovarov/bindex.svg?branch=master)](https://travis-ci.org/gsamokovarov/bindex)
 
-This gem adds `Exception#bindings` method to every exception.
+When Ruby raises an exception, it leaves you backtraces to help you figure out
+where did the exception originated in. Bindex gives you the bindings as well.
+This can help you introspect the state of the Ruby program when the exception
+happened.
 
-`Exception#bindings` gets populated with `Binding` objects in the context of
-the traces in which the exception bubbled up when it was raised.
+### Usage
 
-## Usage
-
-The code is in alpha quality! Give it a thought, before using it. With that in
-mind, just raise an exception :)
+**Do not** use this gem on production environments. The performance penalty isn't
+worth it anywhere outside of development.
 
 ## Support
 
