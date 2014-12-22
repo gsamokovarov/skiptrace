@@ -75,7 +75,7 @@ current_bindings(void)
 #include "ruby_20.h"
 #elif RUBY_21
 #include "ruby_21.h"
-#elif RUBY_21preview
+#elif RUBY_21PREVIEW
 #include "ruby_21preview.h"
 #endif
 
