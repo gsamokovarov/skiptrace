@@ -25,6 +25,12 @@ class ExceptionTest < BaseTest
     assert_equal 11, exc.bindings.first.eval('__LINE__')
   end
 
+  test "re-raising doesn't lose bindings information" do
+    exc = ReraisedFixture.new.call
+
+    assert_equal 3, exc.bindings.first.eval('__LINE__')
+  end
+
   test 'bindings is_empty_when_exception_is_still_not_raised' do
     exc = RuntimeError.new
 
