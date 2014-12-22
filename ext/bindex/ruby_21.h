@@ -24,8 +24,8 @@
  SUCH DAMAGE.
 
 **********************************************************************/
-#ifndef _RUBY_20_H
-#define _RUBY_20_H
+#ifndef _RUBY_21_H
+#define _RUBY_21_H
 
 #include "ruby_21/internal.h"
 #include "ruby_21/method.h"
