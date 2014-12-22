@@ -57,7 +57,10 @@ end
   raise_exception = instance_method(:raise_exception)
 
   define_method(:raise_exception) do |exc|
-    exc.instance_variable_set(:@bindings, Bindex::Rubinius.current_bindings)
+    if exc.bindings.empty?
+      exc.instance_variable_set(:@bindings, Bindex::Rubinius.current_bindings)
+    end
+
     raise_exception.bind(self).call(exc)
   end
 end
