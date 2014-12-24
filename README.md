@@ -5,10 +5,24 @@ where did the exception originated in. Bindex gives you the bindings as well.
 This can help you introspect the state of the Ruby program when the exception
 happened.
 
-### Usage
+## Usage
 
 **Do not** use this gem on production environments. The performance penalty isn't
 worth it anywhere outside of development.
+
+### API
+
+Bindex defines the following API:
+
+#### Exception#bindings
+
+Returns all the bindings up to the one in which the exception originated in.
+
+#### Bindex.current_bindings
+
+Returns all of the current Ruby execution state bindings. The first on is the
+current one, the second is the caller one, the third is the caller of the
+caller one and so on.
 
 ## Support
 
