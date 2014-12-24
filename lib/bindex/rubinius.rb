@@ -1,22 +1,5 @@
 module Bindex
-  class Rubinius
-    # Gets the current bindings for all available Ruby frames.
-    #
-    # Filters the internal Rubinius frames.
-    def self.current_bindings
-      locations = ::Rubinius::VM.backtrace(1, true)
-
-      InternalLocationFilter.new(locations).filter.map do |location|
-        Binding.setup(
-          location.variables,
-          location.variables.method,
-          location.constant_scope,
-          location.variables.self,
-          location
-        )
-      end
-    end
-
+  module Rubinius
     # Filters internal Rubinius locations.
     #
     # There are a couple of reasons why we wanna filter out the locations.
@@ -47,6 +30,23 @@ module Bindex
   end
 end
 
+# Gets the current bindings for all available Ruby frames.
+#
+# Filters the internal Rubinius and Bindex frames.
+def Bindex.current_bindings
+  locations = ::Rubinius::VM.backtrace(1, true)
+
+  Bindex::Rubinius::InternalLocationFilter.new(locations).filter.map do |location|
+    Binding.setup(
+      location.variables,
+      location.variables.method,
+      location.constant_scope,
+      location.variables.self,
+      location
+    )
+  end
+end
+
 ::Exception.class_eval do
   def bindings
     @bindings || []
@@ -58,7 +58,7 @@ end
 
   define_method(:raise_exception) do |exc|
     if exc.bindings.empty?
-      exc.instance_variable_set(:@bindings, Bindex::Rubinius.current_bindings)
+      exc.instance_variable_set(:@bindings, Bindex.current_bindings)
     end
 
     raise_exception.bind(self).call(exc)
