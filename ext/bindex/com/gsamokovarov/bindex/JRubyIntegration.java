@@ -16,6 +16,14 @@ public class JRubyIntegration {
 
         RubyClass exception = runtime.getException();
         exception.defineAnnotatedMethods(ExceptionExtensionMethods.class);
+
+        IRubyObject verbose = runtime.getVerbose();
+        try {
+            runtime.setVerbose(runtime.getNil());
+            runtime.addEventHook(new SetExceptionBindingsEventHook());
+        } finally {
+            runtime.setVerbose(verbose);
+        }
     }
 
     private static class BindexMethods {
