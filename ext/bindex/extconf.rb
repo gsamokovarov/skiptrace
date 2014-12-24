@@ -17,6 +17,7 @@ when "ruby"
     $INCFLAGS << " -I./ruby_21/"
   end
 
+  $CFLAGS << " -Wall"
   $CFLAGS << " -g3 -O0" if ENV["DEBUG"]
 
   create_makefile("bindex/cruby")
