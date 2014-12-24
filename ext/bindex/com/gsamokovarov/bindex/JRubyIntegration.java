@@ -13,12 +13,29 @@ public class JRubyIntegration {
     public static void setup(Ruby runtime) {
         RubyModule bindex = runtime.defineModule("Bindex");
         bindex.getSingletonClass().defineAnnotatedMethods(BindexMethods.class);
+
+        RubyClass exception = runtime.getException();
+        exception.defineAnnotatedMethods(ExceptionExtensionMethods.class);
     }
 
     private static class BindexMethods {
         @JRubyMethod(name = "current_bindings")
         public static IRubyObject currentBindings(ThreadContext context, IRubyObject self) {
             return RubyBindingsCollector.collectCurrentFor(context);
+        }
+    }
+
+    private static class ExceptionExtensionMethods {
+        @JRubyMethod
+        public static IRubyObject bindings(ThreadContext context, IRubyObject self) {
+            InstanceVariables instanceVariables = self.getInstanceVariables();
+
+            IRubyObject bindings = instanceVariables.getInstanceVariable("@bindings");
+            if (bindings != null && !bindings.isNil()) {
+                return bindings;
+            }
+
+            return (IRubyObject) RubyArray.newArray(context.getRuntime());
         }
     }
 }

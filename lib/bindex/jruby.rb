@@ -15,9 +15,3 @@ begin
 ensure
   $VERBOSE = previous_verbose
 end
-
-::Exception.class_eval do
-  def bindings
-    @bindings || []
-  end
-end
