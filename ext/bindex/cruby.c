@@ -1,5 +1,13 @@
 #include "bindex.h"
 
+VALUE bx_mBindex;
+
+static VALUE
+bx_current_bindings(VALUE self)
+{
+  return current_bindings();
+}
+
 static VALUE
 bx_exc_set_backtrace(VALUE self, VALUE bt)
 {
@@ -29,6 +37,10 @@ bx_exc_bindings(VALUE self, VALUE bt)
 void
 Init_cruby(void)
 {
+  bx_mBindex = rb_define_module("Bindex");
+
+  rb_define_singleton_method(bx_mBindex, "current_bindings", bx_current_bindings, 0);
+
   rb_define_method(rb_eException, "set_backtrace", bx_exc_set_backtrace, 1);
   rb_define_method(rb_eException, "bindings", bx_exc_bindings, 0);
 }
