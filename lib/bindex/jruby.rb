@@ -4,7 +4,10 @@ else
   require 'bindex/jruby_internals'
 end
 
+java_import com.gsamokovarov.bindex.JRubyIntegration
 java_import com.gsamokovarov.bindex.SetExceptionBindingsEventHook
+
+JRubyIntegration.setup(JRuby.runtime)
 
 begin
   previous_verbose, $VERBOSE = $VERBOSE, nil
