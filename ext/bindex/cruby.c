@@ -22,7 +22,7 @@ bx_exc_set_backtrace(VALUE self, VALUE bt)
 }
 
 static VALUE
-bx_exc_bindings(VALUE self, VALUE bt)
+bx_exc_bindings(VALUE self)
 {
   VALUE bindings;
 
