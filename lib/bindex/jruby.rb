@@ -5,6 +5,5 @@ else
 end
 
 java_import com.gsamokovarov.bindex.JRubyIntegration
-java_import com.gsamokovarov.bindex.SetExceptionBindingsEventHook
 
 JRubyIntegration.setup(JRuby.runtime)
