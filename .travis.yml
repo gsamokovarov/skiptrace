@@ -29,9 +29,9 @@ rvm:
   - ruby-2.1.0
 
   - ruby-head
+  - ruby-2.2.0
 
-  - rbx-2.2.7
-  - rbx-2.2.6
+  - rbx-2.2.10
   - rbx-2.2.2
 
   - jruby-head
