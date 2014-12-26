@@ -12,7 +12,7 @@ import org.jruby.anno.JRubyMethod;
 public class JRubyIntegration {
     public static void setup(Ruby runtime) {
         RubyModule bindex = runtime.defineModule("Bindex");
-        bindex.getSingletonClass().defineAnnotatedMethods(BindexMethods.class);
+        bindex.defineAnnotatedMethods(BindexMethods.class);
 
         RubyClass exception = runtime.getException();
         exception.defineAnnotatedMethods(ExceptionExtensionMethods.class);
@@ -27,7 +27,7 @@ public class JRubyIntegration {
     }
 
     private static class BindexMethods {
-        @JRubyMethod(name = "current_bindings")
+        @JRubyMethod(name = "current_bindings", meta = true)
         public static IRubyObject currentBindings(ThreadContext context, IRubyObject self) {
             return RubyBindingsCollector.collectCurrentFor(context);
         }
@@ -43,7 +43,7 @@ public class JRubyIntegration {
                 return bindings;
             }
 
-            return (IRubyObject) RubyArray.newArray(context.getRuntime());
+            return RubyArray.newArray(context.getRuntime());
         }
     }
 }
