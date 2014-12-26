@@ -55,7 +55,7 @@ current_bindings(void)
   rb_control_frame_t *cfp_limit = RUBY_VM_END_CONTROL_FRAME(th);
   VALUE binding, bindings = rb_ary_new();
 
-  while (cfp_limit > cfp) {
+  while (RUBY_VM_VALID_CONTROL_FRAME_P(cfp, cfp_limit)) {
     cfp = RUBY_VM_PREVIOUS_CONTROL_FRAME(cfp);
     binding = binding_new(th, cfp);
 
