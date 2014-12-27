@@ -55,14 +55,13 @@ current_bindings(void)
   rb_thread_t *th = GET_THREAD();
   rb_control_frame_t *cfp = th->cfp;
   rb_control_frame_t *cfp_limit = RUBY_VM_END_CONTROL_FRAME(th);
-  VALUE binding, bindings = rb_ary_new();
+  VALUE bindings = rb_ary_new();
 
   while (RUBY_VM_VALID_CONTROL_FRAME_P(cfp, cfp_limit)) {
     cfp = RUBY_VM_PREVIOUS_CONTROL_FRAME(cfp);
-    binding = binding_new(th, cfp);
 
-    if (!NIL_P(binding)) {
-      rb_ary_push(bindings, binding);
+    if (RUBY_VM_NORMAL_ISEQ_P(cfp->iseq)) {
+      rb_ary_push(bindings, binding_new(th, cfp));
     }
   }
 
