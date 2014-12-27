@@ -30,15 +30,15 @@ static rb_thread_t *current_thread;
  * Ruby nil is returned when the control frame pointer isn't suitable.
  */
 
-static VALUE
+static inline VALUE
 binding_new(rb_thread_t *th, rb_control_frame_t *cfp)
 {
   VALUE bindval;
   rb_binding_t *bind;
 
-  if (cfp == NULL || cfp->iseq == NULL) {
-    return Qnil;
-  }
+  /* Note that cfp->iseq won't be NULL because of RUBY_VM_NORMAL_ISEQ_P guard.
+   * However, if this goes away, cfp->iseq can be NULL and have to guard for
+   * that. */
 
   bindval = binding_alloc(rb_cBinding);
 
