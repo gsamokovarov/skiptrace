@@ -31,7 +31,7 @@ static rb_thread_t *current_thread;
  */
 
 static inline VALUE
-binding_new(rb_thread_t *th, rb_control_frame_t *cfp)
+binding_for_control_frame(rb_thread_t *th, rb_control_frame_t *cfp)
 {
   VALUE bindval;
   rb_binding_t *bind;
@@ -61,7 +61,7 @@ current_bindings(void)
     cfp = RUBY_VM_PREVIOUS_CONTROL_FRAME(cfp);
 
     if (RUBY_VM_NORMAL_ISEQ_P(cfp->iseq)) {
-      rb_ary_push(bindings, binding_new(th, cfp));
+      rb_ary_push(bindings, binding_for_control_frame(th, cfp));
     }
   }
 
