@@ -9,12 +9,13 @@ rvm:
   - ruby-2.4.0
   - ruby-head
 
-  - rbx-2
-  - rbx-3
-
   - jruby-9.1.8.0
   - jruby-1.7.26
   - jruby-head
+
+allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-head
 
 env:
   global:
