@@ -26,14 +26,14 @@ public class JRubyIntegration {
         }
     }
 
-    private static class BindexMethods {
+    public static class BindexMethods {
         @JRubyMethod(name = "current_bindings", meta = true)
         public static IRubyObject currentBindings(ThreadContext context, IRubyObject self) {
             return RubyBindingsCollector.collectCurrentFor(context);
         }
     }
 
-    private static class ExceptionExtensionMethods {
+    public static class ExceptionExtensionMethods {
         @JRubyMethod
         public static IRubyObject bindings(ThreadContext context, IRubyObject self) {
             InstanceVariables instanceVariables = self.getInstanceVariables();
