@@ -1,12 +1,6 @@
 language: ruby
 
 rvm:
-  - ruby-1.9.3-p551
-  - ruby-1.9.3-p550
-  - ruby-1.9.3-p547
-  - ruby-1.9.3-p545
-  - ruby-1.9.3-p484
-
   - ruby-2.0.0-p598
   - ruby-2.0.0-p576
   - ruby-2.0.0-p481
@@ -35,9 +29,8 @@ rvm:
   - rbx-2.2.2
 
   - jruby-head
-  - jruby-1.7.9-d19
-  - jruby-1.7.17
-  - jruby-1.7.11
+  - jruby-9.1.8.0
+  - jruby-1.7.26
 
 env:
   global:
