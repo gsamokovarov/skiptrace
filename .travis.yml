@@ -9,8 +9,8 @@ rvm:
   - ruby-2.4.0
   - ruby-head
 
-  - rbx-2.2.10
-  - rbx-2.2.2
+  - rbx-2
+  - rbx-3
 
   - jruby-9.1.8.0
   - jruby-1.7.26
