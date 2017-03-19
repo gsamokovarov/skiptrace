@@ -32,8 +32,13 @@ set_exception_bindings_callback(VALUE tpval, void *data)
 {
   rb_trace_arg_t *trace_arg = rb_tracearg_from_tracepoint(tpval);
   VALUE exception = rb_tracearg_raised_exception(trace_arg);
+  VALUE bindings = rb_iv_get(exception, "bindings");
 
-  rb_iv_set(exception, "bindings", current_bindings());
+  /* Set the bindings, only if they haven't been set already. This may reset
+   * the binding during reraise. */
+  if (NIL_P(bindings)) {
+    rb_iv_set(exception, "bindings", current_bindings());
+  }
 }
 
 void
@@ -52,9 +57,8 @@ bx_current_bindings(VALUE self)
 static VALUE
 bx_exc_bindings(VALUE self)
 {
-  VALUE bindings;
+  VALUE bindings = rb_iv_get(self, "bindings");
 
-  bindings = rb_iv_get(self, "bindings");
   if (NIL_P(bindings)) {
     bindings = rb_ary_new();
   }
