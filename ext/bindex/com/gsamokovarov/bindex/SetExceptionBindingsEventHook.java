@@ -16,6 +16,9 @@ public class SetExceptionBindingsEventHook extends EventHook {
         RubyArray bindings = RubyBindingsCollector.collectCurrentFor(context);
         RubyException exception = (RubyException) context.runtime.getGlobalVariables().get("$!");
 
-        exception.setInstanceVariable("@bindings", bindings);
+        IRubyObject exceptionBindings = exception.getInstanceVariable("@bindings");
+        if (exceptionBindings == null || exceptionBindings.isNil()) {
+            exception.setInstanceVariable("@bindings", bindings);
+        }
     }
 }
