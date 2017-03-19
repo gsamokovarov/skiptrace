@@ -2,6 +2,7 @@
 #include <ruby/debug.h>
 
 VALUE bx_mBindex;
+static ID id_bindings;
 
 static VALUE
 current_bindings_callback(const rb_debug_inspector_t *context, void *data)
@@ -32,12 +33,12 @@ set_exception_bindings_callback(VALUE tpval, void *data)
 {
   rb_trace_arg_t *trace_arg = rb_tracearg_from_tracepoint(tpval);
   VALUE exception = rb_tracearg_raised_exception(trace_arg);
-  VALUE bindings = rb_iv_get(exception, "bindings");
+  VALUE bindings = rb_attr_get(exception, id_bindings);
 
   /* Set the bindings, only if they haven't been set already. This may reset
    * the binding during reraise. */
   if (NIL_P(bindings)) {
-    rb_iv_set(exception, "bindings", current_bindings());
+    rb_ivar_set(exception, id_bindings, current_bindings());
   }
 }
 
@@ -57,7 +58,7 @@ bx_current_bindings(VALUE self)
 static VALUE
 bx_exc_bindings(VALUE self)
 {
-  VALUE bindings = rb_iv_get(self, "bindings");
+  VALUE bindings = rb_attr_get(self, id_bindings);
 
   if (NIL_P(bindings)) {
     bindings = rb_ary_new();
@@ -70,6 +71,7 @@ void
 Init_cruby(void)
 {
   bx_mBindex = rb_define_module("Bindex");
+  id_bindings = rb_intern("bindings");
 
   rb_define_singleton_method(bx_mBindex, "current_bindings", bx_current_bindings, 0);
   rb_define_method(rb_eException, "bindings", bx_exc_bindings, 0);
