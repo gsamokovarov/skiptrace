@@ -9,7 +9,7 @@ import org.jruby.runtime.backtrace.BacktraceElement;
 class BindingBuilder {
     public static Binding build(Frame frame, DynamicScope scope, BacktraceElement element) {
     <% if jruby_9k? %>
-        return new Binding(frame, scope, element.clone());
+        return new Binding(frame, scope, element.method, element.filename, element.line);
     <% else %>
         return new Binding(frame, scope.getStaticScope().getModule(), scope, element.clone());
     <% end %>
