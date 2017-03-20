@@ -1,9 +1,9 @@
 # Bindex [![Build Status](https://travis-ci.org/gsamokovarov/bindex.svg?branch=master)](https://travis-ci.org/gsamokovarov/bindex)
 
-When Ruby raises an exception, it leaves you backtraces to help you figure out
+When Ruby raises an exception, it leaves you a backtrace to help you figure out
 where did the exception originated in. Bindex gives you the bindings as well.
-This can help you introspect the state of the Ruby program when the exception
-happened.
+This can help you introspect the state of the Ruby program when at the point
+the exception occurred.
 
 ## Usage
 
@@ -20,7 +20,7 @@ Returns all the bindings up to the one in which the exception originated in.
 
 #### Bindex.current_bindings
 
-Returns all of the current Ruby execution state bindings. The first on is the
+Returns all of the current Ruby execution state bindings. The first one is the
 current one, the second is the caller one, the third is the caller of the
 caller one and so on.
 
@@ -28,18 +28,18 @@ caller one and so on.
 
 ### CRuby
 
-CRuby 1.9.2 and below is **not** supported.
+CRuby 2.0.0 and above is supported.
 
 ### JRuby
 
 To get the best support, run JRuby in interpreted mode.
 
 ```bash
-export JRUBY_OPTS=-J-Djruby.compile.mode=OFF
-
 # If you run JRuby 1.7.12 and above, you can use:
 export JRUBY_OPTS=--dev
 ```
+
+Only JRuby 9k is supported.
 
 ### Rubinius
 
