@@ -35,7 +35,6 @@ CRuby 2.0.0 and above is supported.
 To get the best support, run JRuby in interpreted mode.
 
 ```bash
-# If you run JRuby 1.7.12 and above, you can use:
 export JRUBY_OPTS=--dev
 ```
 

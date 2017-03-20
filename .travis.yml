@@ -10,7 +10,6 @@ rvm:
   - ruby-head
 
   - jruby-9.1.8.0
-  - jruby-1.7.26
   - jruby-head
 
 allow_failures:
@@ -19,7 +18,7 @@ allow_failures:
 
 env:
   global:
-    - JRUBY_OPTS=-J-Djruby.compile.mode=OFF
+    - JRUBY_OPTS=--dev
 
 before_install: gem install bundler
 
