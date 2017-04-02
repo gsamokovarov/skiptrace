@@ -1,7 +1,7 @@
 #include <ruby.h>
 #include <ruby/debug.h>
 
-VALUE bx_mBindex;
+static VALUE bx_mBindex;
 static ID id_bindings;
 
 static VALUE
@@ -22,7 +22,7 @@ current_bindings_callback(const rb_debug_inspector_t *context, void *data)
   return bindings;
 }
 
-VALUE
+static VALUE
 current_bindings(void)
 {
   return rb_debug_inspector_open(current_bindings_callback, NULL);
@@ -42,7 +42,7 @@ set_exception_bindings_callback(VALUE tpval, void *data)
   }
 }
 
-void
+static void
 set_exception_bindings_on_raise(void)
 {
   VALUE tpval = rb_tracepoint_new(0, RUBY_EVENT_RAISE, set_exception_bindings_callback, 0);
