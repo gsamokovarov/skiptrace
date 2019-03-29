@@ -1,4 +1,4 @@
-package com.gsamokovarov.bindex;
+package com.gsamokovarov.skiptrace;
 
 import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.DynamicScope;

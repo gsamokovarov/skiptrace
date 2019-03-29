@@ -1,4 +1,4 @@
-package com.gsamokovarov.bindex;
+package com.gsamokovarov.skiptrace;
 
 import org.jruby.Ruby;
 import org.jruby.RubyArray;
@@ -11,8 +11,8 @@ import org.jruby.anno.JRubyMethod;
 
 public class JRubyIntegration {
     public static void setup(Ruby runtime) {
-        RubyModule bindex = runtime.defineModule("Bindex");
-        bindex.defineAnnotatedMethods(BindexMethods.class);
+        RubyModule skiptrace = runtime.defineModule("Skiptrace");
+        skiptrace.defineAnnotatedMethods(SkiptraceMethods.class);
 
         RubyClass exception = runtime.getException();
         exception.defineAnnotatedMethods(ExceptionExtensionMethods.class);
@@ -26,7 +26,7 @@ public class JRubyIntegration {
         }
     }
 
-    public static class BindexMethods {
+    public static class SkiptraceMethods {
         @JRubyMethod(name = "current_bindings", meta = true)
         public static IRubyObject currentBindings(ThreadContext context, IRubyObject self) {
             return RubyBindingsCollector.collectCurrentFor(context);

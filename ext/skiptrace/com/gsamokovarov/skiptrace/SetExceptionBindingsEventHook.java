@@ -1,4 +1,4 @@
-package com.gsamokovarov.bindex;
+package com.gsamokovarov.skiptrace;
 
 import org.jruby.runtime.EventHook;
 import org.jruby.runtime.RubyEvent;

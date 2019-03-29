@@ -1,7 +1,7 @@
-# Bindex [![Build Status](https://travis-ci.org/gsamokovarov/bindex.svg?branch=master)](https://travis-ci.org/gsamokovarov/bindex)
+# Skiptrace [![Build Status](https://travis-ci.org/gsamokovarov/bindex.svg?branch=master)](https://travis-ci.org/gsamokovarov/bindex)
 
 When Ruby raises an exception, it leaves you a backtrace to help you figure out
-where did the exception originated in. Bindex gives you the bindings as well.
+where did the exception originated in. Skiptrace gives you the bindings as well.
 This can help you introspect the state of the Ruby program when at the point
 the exception occurred.
 
@@ -12,13 +12,13 @@ worth it anywhere outside of development.
 
 ### API
 
-Bindex defines the following API:
+Skiptrace defines the following API:
 
 #### Exception#bindings
 
 Returns all the bindings up to the one in which the exception originated in.
 
-#### Bindex.current_bindings
+#### Skiptrace.current_bindings
 
 Returns all of the current Ruby execution state bindings. The first one is the
 current one, the second is the caller one, the third is the caller of the

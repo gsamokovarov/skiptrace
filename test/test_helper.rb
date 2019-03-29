@@ -1,7 +1,7 @@
 $LOAD_PATH << File.expand_path('../lib', __FILE__)
 
 require 'minitest/autorun'
-require 'bindex'
+require 'skiptrace'
 
 current_directory = File.dirname(File.expand_path(__FILE__))
 

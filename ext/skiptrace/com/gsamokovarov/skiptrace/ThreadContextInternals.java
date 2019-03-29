@@ -1,4 +1,4 @@
-package com.gsamokovarov.bindex;
+package com.gsamokovarov.skiptrace;
 
 import java.lang.reflect.Field;
 import org.jruby.runtime.ThreadContext;
