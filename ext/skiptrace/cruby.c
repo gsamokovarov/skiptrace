@@ -1,7 +1,7 @@
 #include <ruby.h>
 #include <ruby/debug.h>
 
-static VALUE bx_mBindex;
+static VALUE st_mSkiptrace;
 static ID id_bindings;
 
 static VALUE
@@ -50,13 +50,13 @@ set_exception_bindings_on_raise(void)
 }
 
 static VALUE
-bx_current_bindings(VALUE self)
+st_current_bindings(VALUE self)
 {
   return current_bindings();
 }
 
 static VALUE
-bx_exc_bindings(VALUE self)
+st_exc_bindings(VALUE self)
 {
   VALUE bindings = rb_attr_get(self, id_bindings);
 
@@ -70,11 +70,11 @@ bx_exc_bindings(VALUE self)
 void
 Init_cruby(void)
 {
-  bx_mBindex = rb_define_module("Bindex");
+  st_mSkiptrace = rb_define_module("Skiptrace");
   id_bindings = rb_intern("bindings");
 
-  rb_define_singleton_method(bx_mBindex, "current_bindings", bx_current_bindings, 0);
-  rb_define_method(rb_eException, "bindings", bx_exc_bindings, 0);
+  rb_define_singleton_method(st_mSkiptrace, "current_bindings", st_current_bindings, 0);
+  rb_define_method(rb_eException, "bindings", st_exc_bindings, 0);
 
   set_exception_bindings_on_raise();
 }

@@ -1,4 +1,4 @@
-package com.gsamokovarov.bindex;
+package com.gsamokovarov.skiptrace;
 
 class ThreadContextInterfaceException extends RuntimeException {
     private static final String MESSAGE_TEMPLATE =

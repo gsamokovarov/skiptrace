@@ -3,13 +3,13 @@ $LOAD_PATH << File.expand_path('../lib', __FILE__)
 require 'skiptrace/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "bindex"
+  spec.name          = "skiptrace"
   spec.version       = Skiptrace::VERSION
   spec.authors       = ["Genadi Samokovarov"]
   spec.email         = ["gsamokovarov@gmail.com"]
   spec.extensions    = ["ext/skiptrace/extconf.rb"]
   spec.summary       = "Bindings for your Ruby exceptions"
-  spec.homepage      = "https://github.com/gsamokovarov/bindex"
+  spec.homepage      = "https://github.com/gsamokovarov/skiptrace"
   spec.license       = "MIT"
 
   spec.required_ruby_version = ">= 2.0.0"

@@ -1,5 +1,9 @@
-require 'bundler/gem_tasks'
 require 'rake/testtask'
+require "rake/clean"
+
+CLOBBER.include "pkg"
+
+Bundler::GemHelper.install_tasks name: ENV.fetch('GEM_NAME', 'skiptrace')
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
@@ -11,18 +15,18 @@ case RUBY_ENGINE
 when 'ruby'
   require 'rake/extensiontask'
 
-  Rake::ExtensionTask.new('bindex') do |ext|
+  Rake::ExtensionTask.new('skiptrace') do |ext|
     ext.name = 'cruby'
-    ext.lib_dir = 'lib/bindex'
+    ext.lib_dir = 'lib/skiptrace'
   end
 
   task default: [:clean, :compile, :test]
 when 'jruby'
   require 'rake/javaextensiontask'
 
-  Rake::JavaExtensionTask.new('bindex') do |ext|
+  Rake::JavaExtensionTask.new('skiptrace') do |ext|
     ext.name = 'jruby_internals'
-    ext.lib_dir = 'lib/bindex'
+    ext.lib_dir = 'lib/skiptrace'
   end
 
   task default: [:clean, :compile, :test]

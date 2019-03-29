@@ -1,4 +1,4 @@
-module Bindex
+module Skiptrace
   module Rubinius
     # Filters internal Rubinius locations.
     #
@@ -32,11 +32,11 @@ end
 
 # Gets the current bindings for all available Ruby frames.
 #
-# Filters the internal Rubinius and Bindex frames.
-def Bindex.current_bindings
+# Filters the internal Rubinius and Skiptrace frames.
+def Skiptrace.current_bindings
   locations = ::Rubinius::VM.backtrace(1, true)
 
-  Bindex::Rubinius::InternalLocationFilter.new(locations).filter.map do |location|
+  Skiptrace::Rubinius::InternalLocationFilter.new(locations).filter.map do |location|
     Binding.setup(
       location.variables,
       location.variables.method,
@@ -58,7 +58,7 @@ end
 
   define_method(:raise_exception) do |exc|
     if exc.bindings.empty?
-      exc.instance_variable_set(:@bindings, Bindex.current_bindings)
+      exc.instance_variable_set(:@bindings, Skiptrace.current_bindings)
     end
 
     raise_exception.bind(self).call(exc)
