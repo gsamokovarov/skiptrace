@@ -4,31 +4,31 @@ class ExceptionTest < BaseTest
   test 'bindings returns all the bindings of where the error originated' do
     exc = FlatFixture.new.call
 
-    assert_equal 3, exc.bindings.first.eval('__LINE__')
+    assert_equal 3, exc.bindings.first.source_location.last
   end
 
   test 'bindings returns all the bindings of where a custom error originate' do
     exc = CustomErrorFixture.new.call
 
-    assert_equal 5, exc.bindings.first.eval('__LINE__')
+    assert_equal 5, exc.bindings.first.source_location.last
   end
 
   test 'bindings goes down the_stack' do
     exc = BasicNestedFixture.new.call
 
-    assert_equal 11, exc.bindings.first.eval('__LINE__')
+    assert_equal 11, exc.bindings.first.source_location.last
   end
 
   test 'bindings inside_of_an_eval' do
     exc = EvalNestedFixture.new.call
 
-    assert_equal 11, exc.bindings.first.eval('__LINE__')
+    assert_equal 11, exc.bindings.first.source_location.last
   end
 
   test "re-raising doesn't lose bindings information" do
     exc = ReraisedFixture.new.call
 
-    assert_equal 3, exc.bindings.first.eval('__LINE__')
+    assert_equal 3, exc.bindings.first.source_location.last
   end
 
   test 'bindings is_empty_when_exception_is_still_not_raised' do
