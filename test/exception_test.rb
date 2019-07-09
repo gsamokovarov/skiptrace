@@ -48,4 +48,18 @@ class ExceptionTest < BaseTest
 
     assert_equal [], exc.bindings
   end
+
+  test 'binding_locations maps closely to backtrace_locations' do
+    exc = FlatFixture.new.call
+
+    exc.binding_locations[0].tap do |location|
+      assert_equal 3, location.lineno
+      assert_equal exc, location.binding.eval('exc')
+    end
+
+    exc.binding_locations[1].tap do |location|
+      assert_equal 53, location.lineno
+      assert_equal exc, location.binding.eval('exc')
+    end
+  end
 end
