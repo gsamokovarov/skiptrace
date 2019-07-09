@@ -13,13 +13,13 @@ class ExceptionTest < BaseTest
     assert_equal 5, exc.bindings.first.source_location.last
   end
 
-  test 'bindings goes down the_stack' do
+  test 'bindings goes down the stack' do
     exc = BasicNestedFixture.new.call
 
     assert_equal 11, exc.bindings.first.source_location.last
   end
 
-  test 'bindings inside_of_an_eval' do
+  test 'bindings inside of an eval' do
     exc = EvalNestedFixture.new.call
 
     assert_equal 11, exc.bindings.first.source_location.last
@@ -31,13 +31,13 @@ class ExceptionTest < BaseTest
     assert_equal 3, exc.bindings.first.source_location.last
   end
 
-  test 'bindings is_empty_when_exception_is_still_not_raised' do
+  test 'bindings is empty when exception is still not raised' do
     exc = RuntimeError.new
 
     assert_equal [], exc.bindings
   end
 
-  test 'bindings is_empty_when_set_backtrace_is_badly_called' do
+  test 'bindings is empty when set backtrace is badly called' do
     exc = RuntimeError.new
 
     # Exception#set_backtrace expects a string or array of strings. If the
