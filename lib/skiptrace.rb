@@ -7,5 +7,5 @@ when 'ruby'
   require 'skiptrace/cruby'
 end
 
-require "skiptrace/version"
-
+require 'skiptrace/location'
+require 'skiptrace/version'
