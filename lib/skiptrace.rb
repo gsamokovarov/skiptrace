@@ -1,10 +1,10 @@
 case RUBY_ENGINE
 when 'rbx'
-  require 'skiptrace/rubinius'
+  require 'skiptrace/internal/rubinius'
 when 'jruby'
-  require 'skiptrace/jruby'
+  require 'skiptrace/internal/jruby'
 when 'ruby'
-  require 'skiptrace/cruby'
+  require 'skiptrace/internal/cruby'
 end
 
 require 'skiptrace/location'

@@ -17,7 +17,7 @@ when 'ruby'
 
   Rake::ExtensionTask.new('skiptrace') do |ext|
     ext.name = 'cruby'
-    ext.lib_dir = 'lib/skiptrace'
+    ext.lib_dir = 'lib/skiptrace/internal'
   end
 
   task default: [:clean, :compile, :test]
@@ -26,7 +26,7 @@ when 'jruby'
 
   Rake::JavaExtensionTask.new('skiptrace') do |ext|
     ext.name = 'jruby_internals'
-    ext.lib_dir = 'lib/skiptrace'
+    ext.lib_dir = 'lib/skiptrace/internal'
     ext.source_version = '1.8'
     ext.target_version = '1.8'
   end
