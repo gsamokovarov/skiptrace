@@ -1,12 +1,9 @@
 language: ruby
 
 rvm:
-  - ruby-2.3.3
-  - ruby-2.4.0
+  - ruby-2.5
+  - ruby-2.6
   - ruby-head
-
-  - jruby-9.1.8.0
-  - jruby-head
 
 allow_failures:
     - rvm: ruby-head
