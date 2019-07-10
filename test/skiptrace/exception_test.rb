@@ -15,9 +15,9 @@ module Skiptrace
     end
 
     test 'bindings goes down the stack' do
-      exc = BasicNestedFixture.new.call
+      exc = BasicNestedFixture.()
 
-      assert_equal 11, exc.bindings.first.source_location.last
+      assert_equal 14, exc.bindings.first.source_location.last
     end
 
     test 'bindings inside of an eval' do
