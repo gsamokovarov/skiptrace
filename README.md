@@ -33,7 +33,7 @@ caller one and so on.
 
 ### CRuby
 
-CRuby 2.0.0 and above is supported.
+CRuby 2.5.0 and above is supported.
 
 ### JRuby
 
