@@ -1,11 +1,14 @@
-class ReraisedFixture
-  def call
-    reraise_an_error
-  rescue => exc
-    exc
-  end
+module Skiptrace
+  module ReraisedFixture
+    extend self
 
-  private
+    def call
+      reraise_an_error
+    rescue => exc
+      exc
+    end
+
+    private
 
     def raise_an_error_in_eval
       method_that_raises
@@ -16,4 +19,5 @@ class ReraisedFixture
     def method_that_raises
       raise
     end
+  end
 end
