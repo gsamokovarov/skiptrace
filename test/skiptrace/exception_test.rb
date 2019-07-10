@@ -53,7 +53,7 @@ module Skiptrace
     test 'binding_locations maps closely to backtrace_locations' do
       exc = FlatFixture.()
 
-      exc.binding_locations[0].tap do |location|
+      exc.binding_locations.first.tap do |location|
         assert_equal 4, location.lineno
         assert_equal exc, location.binding.eval('exc')
       end
