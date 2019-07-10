@@ -18,6 +18,11 @@ Skiptrace defines the following API:
 
 Returns all the bindings up to the one in which the exception originated in.
 
+#### Exception#binding_locations
+
+Returns an array of `Skiptrace::Location` objects that are like [`Thread::Backtrace::Location`](https://ruby-doc.org/core-2.6.3/Thread/Backtrace/Location.html)
+but also carry a `Binding` object for that frame through the `#binding` method.
+
 #### Skiptrace.current_bindings
 
 Returns all of the current Ruby execution state bindings. The first one is the
