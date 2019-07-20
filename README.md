@@ -1,9 +1,9 @@
 # Skiptrace [![Build Status](https://travis-ci.org/gsamokovarov/skiptrace.svg?branch=master)](https://travis-ci.org/gsamokovarov/skiptrace)
 
-When Ruby raises an exception, it leaves you a backtrace to help you figure out
-where did the exception originated in. Skiptrace gives you the bindings as well.
-This can help you introspect the state of the Ruby program when at the point
-the exception occurred.
+When Ruby raises an exception, it leaves a backtrace to help you figure out
+where the exception originated in. Skiptrace gives you the bindings as well.
+This can help you introspect the state of the Ruby program when the exception 
+occurred.
 
 ## Usage
 
