@@ -11,7 +11,7 @@ Dir["#{current_directory}/fixtures/**/*.rb"].each do |fixture|
 end
 
 module Skiptrace
-  class Test < MiniTest::Test
+  class Test < Minitest::Test
     def self.test(name, &block)
       define_method("test_#{name}", &block)
     end
